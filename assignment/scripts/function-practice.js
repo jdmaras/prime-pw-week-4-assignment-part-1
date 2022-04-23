@@ -14,15 +14,14 @@ console.log('Test - should say "Hello World!"', hello());
 // 2. Function to return an personalized hello, using the `name` argument.
 //    for example 'Hello, Jo!', or 'Hello, Stacy!'
 function helloName(name) {
-  return "Hello, Jo!";
+  return `Hello, ${name}`;
 }
 // Remember to call the function to test
-console.log("When I see Jo, I say: ", helloName());
+console.log("When I see Jo, I say: ", helloName(`Jo`));
 
 // 3. Function to add two numbers together & return the result
 function addNumbers(firstNumber, secondNumber) {
-  let answer = firstNumber + secondNumber;
-  return answer;
+  return firstNumber + secondNumber;
   // return firstNumber + secondNumber;
 }
 console.log("Adding those numbers together equals: ", addNumbers(3, 4));
@@ -37,6 +36,10 @@ console.log(
   "Multiplying three numbers together equals: ",
   multiplyThree(3, 3, 3)
 );
+console.log(
+  "Multiplying three numbers together equals: ",
+  multiplyThree(7, 8, 3)
+);
 
 // 5. Function that will return true if a number is positive,
 //    or greater than zero, and false otherwise
@@ -44,15 +47,23 @@ function isPositive(number) {
   if (number > 0) {
     return true;
   } else {
-    number <= 0;
     return false;
   }
 }
 // Call the function to test each outcome (true & false)
 // Write a separate console.log statement for each outcome
-console.log("isPositive - should say true", isPositive(3));
-console.log("isPositive - should say false", isPositive(0));
-console.log("isPositive - should say false", isPositive(-3));
+console.log(
+  "passing three to function and is more than zero - should say true",
+  isPositive(3)
+);
+console.log(
+  "passing zero to function - should say false because it is equal to zero",
+  isPositive(0)
+);
+console.log(
+  "passing negative number to function - should say false",
+  isPositive(-3)
+);
 
 // 6. Function to return the _last_ item in an array. If the
 //    array is empty, return `undefined`.
@@ -86,16 +97,27 @@ console.log(find("chicken", food));
 // ----------------------
 // 8. Function to check if a letter is the first letter in a
 //    string. Return true if it is, and false otherwise
-function isFirstLetter(letter, string) {}
+function isFirstLetter(letter, string) {
+  if (letter === string.charAt(0)) {
+    return true;
+  }
+  return false;
+}
 console.log("isFirstLetter - should say true", isFirstLetter("a", "apple"));
 console.log("isFirstLetter - should say false", isFirstLetter("z", "apple"));
+console.log("isFirstLetter - should say false", isFirstLetter("t", "lips"));
+console.log("isFirstLetter - should say false", isFirstLetter("l", "tips"));
 
 // 9. Function to return the sum of all numbers in an array
-function sumAll() {
+function sumAll(numbers) {
   let sum = 0;
   // TODO: loop to add items
+  for (let number of numbers) {
+    sum += number;
+  }
   return sum;
 }
+console.log(`sumAll - should equal 14 when past to :`, sumAll([2, 3, 4, 5]));
 
 // 10. Function to return a new array of all positive (greater than zero)
 //     numbers contained in an input array. If there are no positive numbers
